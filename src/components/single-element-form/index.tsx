@@ -91,7 +91,7 @@ export const SingleElementForm: React.FC<SingleElementFormProps> = ({
 
           {state === "form" && (
             <div className={styles.buttons}>
-              <Button onClick={() => onCancel?.()}>Cancel</Button>
+              {/* <Button onClick={() => onCancel?.()}>Cancel</Button> */}
               <Button type="primary" {...saveButtonProps}>
                 Save
               </Button>

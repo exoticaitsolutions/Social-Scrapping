@@ -173,7 +173,7 @@ const Text = () => {
           💡
         </span>
         <span className="text">
-          This example is open-source! Get the full source code.
+          Twitter Scrapping 
         </span>
       </div>
     </a>

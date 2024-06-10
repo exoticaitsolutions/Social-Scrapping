@@ -1,13 +1,8 @@
 import type { IResourceItem } from "@refinedev/core";
 
 import {
-  CalendarOutlined,
-  ContainerOutlined,
-  CrownOutlined,
   DashboardOutlined,
   ProjectOutlined,
-  ShopOutlined,
-  TeamOutlined,
 } from "@ant-design/icons";
 
 export const resources: IResourceItem[] = [
@@ -21,138 +16,65 @@ export const resources: IResourceItem[] = [
     },
   },
   {
-    name: "events",
-    list: "/calendar",
-    create: "/calendar/create",
-    edit: "/calendar/edit/:id",
-    show: "/calendar/show/:id",
+    name: "twiiter",
     meta: {
-      label: "Calendar",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <CalendarOutlined />,
-    },
-  },
-  {
-    name: "scrumboard",
-    meta: {
-      label: "Scrumboard",
+      label: "Twitter Scrapping",
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
       icon: <ProjectOutlined />,
     },
   },
 
   {
-    name: "tasks",
-    list: "/scrumboard/kanban",
-    create: "/scrumboard/kanban/create",
-    edit: "/scrumboard/kanban/edit/:id",
+    name: "tweets-by-username",
+    list: "/twitter/tweets-by-profile",
+    create: "/twitter/tweets-by-profile/create",
     meta: {
-      label: "Project Kanban",
-      parent: "scrumboard",
+      label: "Get tweets by profile name",
+      parent: "twiiter",
     },
   },
   {
-    name: "taskStages",
-    create: "/scrumboard/kanban/stages/create",
-    edit: "/scrumboard/kanban/stages/edit/:id",
-    list: "/scrumboard/kanban",
-    meta: {
-      hide: true,
-    },
-  },
-  {
-    name: "deals",
-    list: "/scrumboard/sales",
-    create: "/scrumboard/sales/create",
-    edit: "/scrumboard/sales/edit/:id",
-    meta: {
-      label: "Sales Pipeline",
-      parent: "scrumboard",
-    },
-  },
-  {
-    name: "deals",
-    identifier: "finalize-deals",
-    edit: "/scrumboard/sales/:id/finalize",
-    meta: {
-      hide: true,
-    },
-  },
-  {
-    name: "dealStages",
-    create: "/scrumboard/sales/stages/create",
-    edit: "/scrumboard/sales/stages/edit/:id",
-    list: "/scrumboard/sales",
-    meta: {
-      hide: true,
-    },
-  },
-  {
-    name: "companies",
+    name: "get-tweets-by-hashtag",
     list: "/companies",
     show: "/companies/:id",
     create: "/companies/create",
     edit: "/companies/edit/:id",
     meta: {
-      label: "Companies",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <ShopOutlined />,
+      label: "Get tweets by hashtag",
+      parent: "twiiter",
     },
   },
   {
-    name: "companies",
-    identifier: "sales-companies",
-    create: "/scrumboard/sales/create/company/create",
+    name: "get-trending-hashtags",
+    list: "/companies",
+    show: "/companies/:id",
+    create: "/companies/create",
+    edit: "/companies/edit/:id",
     meta: {
-      hide: true,
+      label: "Get trending hashtag",
+      parent: "twiiter",
     },
   },
   {
-    name: "contacts",
-    list: "/contacts",
-    create: "/contacts/create",
-    edit: "/contacts/edit/:id",
-    show: "/contacts/show/:id",
+    name: "get-tweets-by-post-id",
+    list: "/companies",
+    show: "/companies/:id",
+    create: "/companies/create",
+    edit: "/companies/edit/:id",
     meta: {
-      label: "Contacts",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <TeamOutlined />,
+      label: "Get tweets by post id",
+      parent: "twiiter",
     },
   },
   {
-    name: "quotes",
-    list: "/quotes",
-    create: "/quotes/create",
-    edit: "/quotes/edit/:id",
-    show: "/quotes/show/:id",
+    name: "get-tweets-comments-by-post-id",
+    list: "/companies",
+    show: "/companies/:id",
+    create: "/companies/create",
+    edit: "/companies/edit/:id",
     meta: {
-      label: "Quotes",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <ContainerOutlined />,
+      label: "Get tweets comments by post id",
+      parent: "twiiter",
     },
-  },
-  {
-    name: "administration",
-    meta: {
-      label: "Administration",
-      // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <CrownOutlined />,
-    },
-  },
-  {
-    name: "settings",
-    list: "/administration/settings",
-    meta: {
-      label: "Settings",
-      parent: "administration",
-    },
-  },
-  {
-    name: "audits",
-    list: "/administration/audit-log",
-    meta: {
-      label: "Audit Log",
-      parent: "administration",
-    },
-  },
+  }
 ];
