@@ -77,7 +77,6 @@ export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
                                 <TableRow>
                                     <TableCell ><b>Treding number</b></TableCell>
                                     <TableCell align="right"><b>category</b></TableCell>
-                                    <TableCell align="right"><b>TweetContent</b></TableCell>
                                     <TableCell align="right"><b>type</b></TableCell>
                                     <TableCell align="right"><b>trending</b></TableCell>
                                     <TableCell align="right"><b>Total Post</b></TableCell>
@@ -86,6 +85,7 @@ export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
                             <tbody>
                                 {data.map((post, index) => (
                                     <TableRow key={post.trending_number + index}>
+                                          <TableCell align="right">{post.trending_number}</TableCell>
                                         <TableCell align="right">{post.category}</TableCell>
                                         <TableCell align="right">{post.type}</TableCell>
                                         <TableCell align="right">{post.trending}</TableCell>
