@@ -27,7 +27,6 @@ export const resources: IResourceItem[] = [
   {
     name: "tweets-by-username",
     list: "/twitter/tweets-by-profile",
-    create: "/twitter/tweets-by-profile/create",
     meta: {
       label: "Get tweets by profile name",
       parent: "twiiter",
@@ -35,10 +34,7 @@ export const resources: IResourceItem[] = [
   },
   {
     name: "get-tweets-by-hashtag",
-    list: "/companies",
-    show: "/companies/:id",
-    create: "/companies/create",
-    edit: "/companies/edit/:id",
+    list: "/twitter/tweets-by-hashtag",
     meta: {
       label: "Get tweets by hashtag",
       parent: "twiiter",
@@ -46,10 +42,7 @@ export const resources: IResourceItem[] = [
   },
   {
     name: "get-trending-hashtags",
-    list: "/companies",
-    show: "/companies/:id",
-    create: "/companies/create",
-    edit: "/companies/edit/:id",
+    list: "/twitter/get-trending-hashtags",
     meta: {
       label: "Get trending hashtag",
       parent: "twiiter",
