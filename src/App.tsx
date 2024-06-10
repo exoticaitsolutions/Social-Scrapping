@@ -30,6 +30,9 @@ import "./styles/fc.css";
 import "./styles/index.css";
 
 import { GetTweetsByProfileName } from "./routes/twitter/get-tweets-by-profile-name"
+import {GetTweetsFromHashtag} from "./routes/twitter/get-tweets-from-hashtag"
+import {GetTrendingHashtag} from "./routes/twitter/get-tranding-hashtag"
+
 const App: React.FC = () => {
   // This hook is used to automatically login the user.
   // We use this hook to skip the login page and demonstrate the application more quickly.
@@ -80,6 +83,24 @@ const App: React.FC = () => {
                       }
                     >
                     </Route>
+                    <Route
+                      path="/twitter/tweets-by-hashtag"
+                      element={
+                        <GetTweetsFromHashtag>
+                          <Outlet />
+                        </GetTweetsFromHashtag>
+                      }
+                    >
+                    </Route>
+                    <Route
+                      path="/twitter/get-trending-hashtags"
+                      element={
+                        <GetTrendingHashtag>
+                          <Outlet />
+                        </GetTrendingHashtag>
+                      }
+                    >
+                      </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
                   <Route

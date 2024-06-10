@@ -4,7 +4,7 @@ import { Form, Grid, Input, Space } from "antd";
 import { Table, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 
-export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
+export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
     interface Post {
         Name: string;
         UserTag: string;
@@ -25,11 +25,11 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
         setData([]);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        fetch("http://127.0.0.1:8000/twitter/api/v1/get-profile/", {
+        fetch("http://127.0.0.1:8000/twitter/api/v1/get-tweets-by-hashtag/", {
             method: "POST",
             headers: myHeaders,
             body: JSON.stringify({
-                Profile_name: title,
+                hashtags: title,
             }),
             redirect: "follow",
         })
@@ -63,8 +63,8 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                                 <Form.Item name="name" noStyle>
                                     <Input
                                         size="large"
-                                        placeholder="Search by name" onChange={(e) => setTitle(e.target.value)} />
-                                    <button onClick={fetchData}>Seach Tweets</button>
+                                        placeholder="Enter the Hashtag" onChange={(e) => setTitle(e.target.value)} />
+                                    <button onClick={fetchData}>Click</button>
                                 </Form.Item>
                             </Form>
                         </Space>
@@ -82,8 +82,7 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align="right"><b>Name</b></TableCell>
-                                    <TableCell align="right"><b>UserTag</b></TableCell>
+                                    <TableCell><b>Name</b></TableCell>
                                     <TableCell align="right"><b>Timestamp</b></TableCell>
                                     <TableCell align="right"><b>TweetContent</b></TableCell>
                                     <TableCell align="right"><b>Reply</b></TableCell>
@@ -95,7 +94,6 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                                 {data.map((post, index) => (
                                     <TableRow key={post.Timestamp + index}>
                                         <TableCell align="right">{post.Name}</TableCell>
-                                        <TableCell align="right">{post.UserTag}</TableCell>
                                         <TableCell align="right">{new Date(post.Timestamp).toLocaleString()}</TableCell>
                                         <TableCell align="right">{post.TweetContent}</TableCell>
                                         <TableCell align="right">{post.Reply}</TableCell>
