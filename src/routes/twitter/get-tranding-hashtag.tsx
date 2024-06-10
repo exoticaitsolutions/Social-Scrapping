@@ -6,7 +6,7 @@ import { Table, TableCell, TableContainer, TableHead, TableRow, Paper } from '@m
 
 export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
     interface Post {
-        trending_number: number;
+        id: number;
         category: string;
         type: string; // Assuming it's a string representing the timestamp
         trending: string;
@@ -84,7 +84,8 @@ export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
                             </TableHead>
                             <tbody>
                                 {data.map((post, index) => (
-                                    <TableRow key={post.trending_number + index}>
+                                    <TableRow key={post.id + index}>
+                                          <TableCell align="right">{post.id}</TableCell>
                                         <TableCell align="right">{post.category}</TableCell>
                                         <TableCell align="right">{post.type}</TableCell>
                                         <TableCell align="right">{post.trending}</TableCell>
