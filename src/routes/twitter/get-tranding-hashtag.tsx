@@ -85,6 +85,7 @@ export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
                             <tbody>
                                 {data.map((post, index) => (
                                     <TableRow key={post.trending_number + index}>
+                                          <TableCell align="right">{post.trending_number}</TableCell>
                                         <TableCell align="right">{post.category}</TableCell>
                                         <TableCell align="right">{post.type}</TableCell>
                                         <TableCell align="right">{post.trending}</TableCell>
