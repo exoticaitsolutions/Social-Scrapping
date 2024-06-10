@@ -77,7 +77,6 @@ export const GetTrendingHashtag: FC<PropsWithChildren> = ({ children }) => {
                                 <TableRow>
                                     <TableCell ><b>Treding number</b></TableCell>
                                     <TableCell align="right"><b>category</b></TableCell>
-                                    <TableCell align="right"><b>TweetContent</b></TableCell>
                                     <TableCell align="right"><b>type</b></TableCell>
                                     <TableCell align="right"><b>trending</b></TableCell>
                                     <TableCell align="right"><b>Total Post</b></TableCell>
