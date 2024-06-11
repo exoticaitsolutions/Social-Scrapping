@@ -2,7 +2,7 @@ import { type FC, type PropsWithChildren, useState } from "react";
 import { List } from "@refinedev/antd";
 import { Form, Grid, Input, Space } from "antd";
 import { Table, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-
+import "./app.css";
 
 export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
     interface Post {
@@ -59,14 +59,17 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                                 marginTop: screens.xs ? "1.6rem" : undefined,
                             }}
                         >
-                            <Form layout="inline">
-                                <Form.Item name="name" noStyle>
-                                    <Input
-                                        size="large"
-                                        placeholder="Search by name" onChange={(e) => setTitle(e.target.value)} />
-                                    <button onClick={fetchData}>Seach Tweets</button>
-                                </Form.Item>
+                            <Form layout="inline" className="search-form">
+                                <div className="input">
+                                    <Form.Item name="name" noStyle className="search-input">
+                                        <Input size="large" placeholder="Search by name" onChange={(e) => setTitle(e.target.value)} />
+                                    </Form.Item>
+                                </div>
+                                <div className="btn">
+                                    <button className="search-button" onClick={fetchData}>Search Tweets</button>
+                                </div>
                             </Form>
+
                         </Space>
                     );
                 }}
@@ -77,9 +80,14 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                 }}
             >
                 <div style={{ position: 'relative' }}>
-                    {loading && <div className="loader-container"><p>Please Wait</p></div>}
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+
+                    {loading && (
+                        <div className="loader-container">
+                            <div className="loader"></div>
+                        </div>
+                    )}
+                    <TableContainer component={Paper} className="table-container">
+                        <Table className="table" sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
                                     <TableCell align="right"><b>Name</b></TableCell>
@@ -94,18 +102,19 @@ export const GetTweetsByProfileName: FC<PropsWithChildren> = ({ children }) => {
                             <tbody>
                                 {data.map((post, index) => (
                                     <TableRow key={post.Timestamp + index}>
-                                        <TableCell align="right">{post.Name}</TableCell>
-                                        <TableCell align="right">{post.UserTag}</TableCell>
-                                        <TableCell align="right">{new Date(post.Timestamp).toLocaleString()}</TableCell>
-                                        <TableCell align="right">{post.TweetContent}</TableCell>
-                                        <TableCell align="right">{post.Reply}</TableCell>
-                                        <TableCell align="right">{post.Retweet}</TableCell>
-                                        <TableCell align="right">{post.Likes}</TableCell>
+                                        <TableCell>{post.Name}</TableCell>
+                                        <TableCell>{post.UserTag}</TableCell>
+                                        <TableCell>{new Date(post.Timestamp).toLocaleString()}</TableCell>
+                                        <TableCell>{post.TweetContent}</TableCell>
+                                        <TableCell>{post.Reply}</TableCell>
+                                        <TableCell>{post.Retweet}</TableCell>
+                                        <TableCell>{post.Likes}</TableCell>
                                     </TableRow>
                                 ))}
                             </tbody>
                         </Table>
                     </TableContainer>
+
                 </div>
             </List>
 

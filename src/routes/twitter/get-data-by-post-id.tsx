@@ -4,7 +4,7 @@ import { Form, Grid, Input, Space } from "antd";
 import { Table, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 
-export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
+export const GetTweetsByPostId: FC<PropsWithChildren> = ({ children }) => {
     interface Post {
         Name: string;
         UserTag: string;
@@ -15,7 +15,8 @@ export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
         Likes: number;
     }
     const screens = Grid.useBreakpoint();
-    const [title, setTitle] = useState("");
+    const [profile_name, setUser] = useState("");
+    const [profile_ids, setIDS] = useState("");
     const [data, setData] = useState<Post[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -25,12 +26,24 @@ export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
         setData([]);
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        fetch("http://127.0.0.1:8000/twitter/api/v1/get-tweet-hashtag/", {
+        const raw = JSON.stringify({
+            "user_name": profile_name,
+            "post_ids": [
+                profile_ids
+            ]
+        });
+        const requestOptions = {
             method: "POST",
             headers: myHeaders,
-            body: JSON.stringify({
-                hashtags: title,
-            }),
+            body: raw,
+            redirect: "follow"
+          };
+          console.log(requestOptions);
+          
+        fetch("http://127.0.0.1:8000/twitter/api/v1/get-tweets-by-id/", {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
             redirect: "follow",
         })
             .then((response) => response.json())
@@ -63,7 +76,14 @@ export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
                                 <Form.Item name="name" noStyle>
                                     <Input
                                         size="large"
-                                        placeholder="Enter the Hashtag" onChange={(e) => setTitle(e.target.value)} />
+                                        placeholder="Enter the username" onChange={(e) => setUser(e.target.value)} />
+                                </Form.Item>
+                            </Form>
+                            <Form layout="inline">
+                                <Form.Item name="name" noStyle>
+                                    <Input
+                                        size="large"
+                                        placeholder="Enter the post_ids" onChange={(e) => setIDS(e.target.value)} />
                                     <button onClick={fetchData}>Click</button>
                                 </Form.Item>
                             </Form>
@@ -78,32 +98,40 @@ export const GetTweetsFromHashtag: FC<PropsWithChildren> = ({ children }) => {
             >
                 <div style={{ position: 'relative' }}>
                     {loading && <div className="loader-container"><p>Please Wait</p></div>}
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={{ borderRadius: 8, boxShadow: '0 4px 8px rgba(0,0,0,0.1)', marginBottom: '20px' }}>
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                            <TableHead>
+                            <TableHead sx={{ backgroundColor: '#f2f2f2' }}>
                                 <TableRow>
-                                    <TableCell><b>Name</b></TableCell>
+                                    <TableCell><b>Username</b></TableCell>
+                                    <TableCell align="right"><b>Tweet Content</b></TableCell>
+                                    <TableCell align="right"><b>Views Count</b></TableCell>
                                     <TableCell align="right"><b>Timestamp</b></TableCell>
-                                    <TableCell align="center" className="tweet-content-cell"><b>TweetContent</b></TableCell>
-                                    <TableCell align="right"><b>Reply</b></TableCell>
-                                    <TableCell align="right"><b>Retweet</b></TableCell>
-                                    <TableCell align="right"><b>Likes</b></TableCell>
+                                    <TableCell align="right"><b>Content Image</b></TableCell>
+                                    <TableCell align="right"><b>Reply Count</b></TableCell>
+                                    <TableCell align="right"><b>Like Count</b></TableCell>
+                                    <TableCell align="right"><b>Repost Count</b></TableCell>
+                                    <TableCell align="right"><b>Bookmark Count</b></TableCell>
                                 </TableRow>
                             </TableHead>
                             <tbody>
                                 {data.map((post, index) => (
                                     <TableRow key={post.Timestamp + index}>
-                                        <TableCell align="right">{post.Name}</TableCell>
-                                        <TableCell align="right">{new Date(post.Timestamp).toLocaleString()}</TableCell>
+                                        <TableCell align="right">{post.username}</TableCell>
                                         <TableCell align="right">{post.TweetContent}</TableCell>
-                                        <TableCell align="right">{post.Reply}</TableCell>
-                                        <TableCell align="right">{post.Retweet}</TableCell>
-                                        <TableCell align="right">{post.Likes}</TableCell>
+                                        <TableCell align="right">{post.views_count}</TableCell>
+                                        <TableCell align="right">{new Date(post.Timestamp).toLocaleString()}</TableCell>
+                                        <TableCell align="right">{post.content_image}</TableCell>
+                                        <TableCell align="right">{post.reply_count}</TableCell>
+                                        <TableCell align="right">{post.like_count}</TableCell>
+                                        <TableCell align="right">{post.repost_count}</TableCell>
+                                        <TableCell align="right">{post.bookmark_count}</TableCell>
+                                        {/* <TableCell align="right">{post.Likes}</TableCell> */}
                                     </TableRow>
                                 ))}
                             </tbody>
                         </Table>
                     </TableContainer>
+
                 </div>
             </List>
 

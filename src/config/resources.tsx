@@ -2,7 +2,7 @@ import type { IResourceItem } from "@refinedev/core";
 
 import {
   DashboardOutlined,
-  ProjectOutlined,
+  TwitterOutlined,
 } from "@ant-design/icons";
 
 export const resources: IResourceItem[] = [
@@ -20,7 +20,7 @@ export const resources: IResourceItem[] = [
     meta: {
       label: "Twitter Scrapping",
       // @ts-expect-error Ant Design Icon's v5.0.1 has an issue with @types/react@^18.2.66
-      icon: <ProjectOutlined />,
+      icon: <TwitterOutlined  />,
     },
   },
 
@@ -28,7 +28,7 @@ export const resources: IResourceItem[] = [
     name: "tweets-by-username",
     list: "/twitter/tweets-by-profile",
     meta: {
-      label: "Get tweets by profile name",
+      label: "Retrieve tweets based on user profiles",
       parent: "twiiter",
     },
   },
@@ -50,10 +50,10 @@ export const resources: IResourceItem[] = [
   },
   {
     name: "get-tweets-by-post-id",
-    list: "/companies",
-    show: "/companies/:id",
-    create: "/companies/create",
-    edit: "/companies/edit/:id",
+    list: "/twitter/get-tweets-by-id",
+    // show: "/companies/:id",
+    // create: "/companies/create",
+    // edit: "/companies/edit/:id",
     meta: {
       label: "Get tweets by post id",
       parent: "twiiter",
@@ -61,10 +61,10 @@ export const resources: IResourceItem[] = [
   },
   {
     name: "get-tweets-comments-by-post-id",
-    list: "/companies",
-    show: "/companies/:id",
-    create: "/companies/create",
-    edit: "/companies/edit/:id",
+    list: "/twitter/get-comments-for-tweet/",
+    // show: "/companies/:id",
+    // create: "/companies/create",
+    // edit: "/companies/edit/:id",
     meta: {
       label: "Get tweets comments by post id",
       parent: "twiiter",

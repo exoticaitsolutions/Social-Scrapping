@@ -32,6 +32,8 @@ import "./styles/index.css";
 import { GetTweetsByProfileName } from "./routes/twitter/get-tweets-by-profile-name"
 import {GetTweetsFromHashtag} from "./routes/twitter/get-tweets-from-hashtag"
 import {GetTrendingHashtag} from "./routes/twitter/get-tranding-hashtag"
+import {GetTweetsByPostId} from "./routes/twitter/get-data-by-post-id"
+import {GetCommenToTweet} from "./routes/twitter/get_comments_for_tweets"
 
 const App: React.FC = () => {
   // This hook is used to automatically login the user.
@@ -101,6 +103,29 @@ const App: React.FC = () => {
                       }
                     >
                       </Route>
+
+                    <Route
+                      path="/twitter/get-tweets-by-id"
+                      element={
+                        <GetTweetsByPostId>
+                          <Outlet />
+                        </GetTweetsByPostId>
+                      }
+                    >
+                      </Route>
+
+
+                    <Route
+                      path="/twitter/get-comments-for-tweet/"
+                      element={
+                        <GetCommenToTweet>
+                          <Outlet />
+                        </GetCommenToTweet>
+                      }
+                    >
+                      </Route>
+
+
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
                   <Route

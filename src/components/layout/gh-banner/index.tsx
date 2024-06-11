@@ -170,10 +170,10 @@ const Text = () => {
             fontSize: "32px",
           }}
         >
-          💡
+        
         </span>
         <span className="text">
-          Twitter Scrapping 
+          Social Media Scrapping 
         </span>
       </div>
     </a>
