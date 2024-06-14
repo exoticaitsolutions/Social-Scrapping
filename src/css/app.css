@@ -1,0 +1,266 @@
+.loader-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.loader-container p {
+    margin: 0;
+}
+
+.table-container {
+    margin-top: 28px;
+}
+
+.table-header-cell {
+    text-align: right;
+    font-weight: bold;
+}
+
+.table-cell {
+    text-align: right;
+}
+
+.search-input {
+    margin-top: 1.6rem;
+}
+
+.search-button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 576px) {
+    .search-input {
+        margin-top: 0;
+    }
+}
+.table-cell {
+    padding: 12px; 
+}
+
+/*/ Styling the first column /*/
+.table-cell:first-child {
+    text-align: left;
+}
+
+.table-cell:nth-child(2),
+.table-cell:nth-child(4) {
+    text-align: center; 
+}
+
+.table-row:nth-child(odd) .table-cell {
+    background-color: #f2f2f2; 
+}
+
+.table-row:nth-child(3) .table-cell:nth-child(2) {
+    font-weight: bold; /
+}
+.tweet-content-cell {
+    text-align: center;
+}
+@keyframes loader {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader {
+    width: fit-content;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    color: #0000;
+    background: linear-gradient(90deg,#0f0f0f calc(50% + 0.5ch),#f0ebeb 0) right/calc(200% + 1ch) 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: l7 2s infinite steps(11);
+}
+.loader:before {
+    content:"Loading..."
+}
+@keyframes l7 {to{background-position: left}}
+
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    margin-right: 10px; 
+}
+
+.search-input input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s ease; 
+}
+
+.search-input input:focus {
+    border-color: #007bff; 
+}
+
+.search-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+}
+
+.search-button:hover {
+    background-color: #0056b3; 
+}
+
+.table-container {
+    margin-top: 28px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+
+}
+
+.table th {
+    font-weight: bold;
+    background-color: #7a7a7c;
+    text-align: center;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5; 
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #fafafa; 
+}
+
+.table tbody tr:hover td {
+    transition: background-color 0.3s ease; 
+}
+
+.dashborder-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashborder-heading {
+    margin-bottom: 20px;
+}
+
+.twitter-col-submit {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.loading {
+    margin-top: 10px;
+}
+
+.profile-data {
+    margin-top: 20px;
+}
+
+.tweet-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tweet-table th, .tweet-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tweet-table th {
+    background-color: #f2f2f2;
+}
+space-between
+.tweet-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.tweet-table tr:hover {
+    background-color: #ddd;
+}
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #007bff;
+    animation: spin 1s linear infinite;
+}
+li.txt {
+    color: white;
+}
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: fit-content;
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    clip-path: inset(0 100% 0 0);
+    animation: l5 2s steps(11) infinite;
+  }
+  .loader:before {
+    content:"Loading..."
+  }
+  @keyframes l5 {to{clip-path: inset(0 -1ch 0 0)}}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
