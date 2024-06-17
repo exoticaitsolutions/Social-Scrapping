@@ -12,13 +12,12 @@ export function WebRoute() {
     return (
         <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/dashboard" element={ <PrivateRoute> <Dashboard /> </PrivateRoute>} />
-            <Route path="/twitter/tweets-by-profile-name" element={<GetTweetsByProfileName />} />
-            <Route path="/twitter/tweets-by-hashtag" element={<GetTweetsFromHashtag />} />
-            <Route path="/twitter/trending-hashtag" element={<GetTrendingHashtag />} />
-            <Route path="/twitter/get-tweets-by-post-ids" element={<GetTweetsByPostIds />} />
-            <Route path="/twitter/get-tweets-comments-by-postids" element={<GetCommenToTweetByPostIDs />} />
-
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path="/twitter/tweets-by-profile-name" element={<PrivateRoute><GetTweetsByProfileName /></PrivateRoute>} />
+            <Route path="/twitter/tweets-by-hashtag" element={<PrivateRoute><GetTweetsFromHashtag /></PrivateRoute>} />
+            <Route path="/twitter/trending-hashtag" element={<PrivateRoute><GetTrendingHashtag /></PrivateRoute>} />
+            <Route path="/twitter/get-tweets-by-post-ids" element={<PrivateRoute><GetTweetsByPostIds /></PrivateRoute>} />
+            <Route path="/twitter/get-tweets-comments-by-postids" element={<PrivateRoute><GetCommenToTweetByPostIDs /></PrivateRoute>} />
         </Routes>
     );
 }
